@@ -88,13 +88,12 @@ Install **Visual Studio 2022 Desktop development with C++**, a Windows SDK and
 powershell -ExecutionPolicy Bypass -File .\Build.ps1
 ```
 
-The build produces the application and runs offline descriptor/report tests.
-It does not install a driver or create a live virtual device during tests.
+The build produces the application and checks the interface offline.
+It does not install a driver, create a virtual device or send input.
 
 ```text
 App/       Application, mouse descriptors and report encoding
 Vdevice/   Vdevice.h and Vdevice.cpp, the two-file raw SDK
-Tests/     Offline protocol tests
 docs/      Screenshot and binary distribution terms
 ```
 

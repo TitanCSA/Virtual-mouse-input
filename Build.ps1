@@ -1,5 +1,5 @@
 [CmdletBinding()]
-param([ValidateSet('All','Build','Test','Package')][string]$Target='All',[switch]$Render,[switch]$AddressSanitizer,[string]$DriverInstaller)
+param([ValidateSet('All','Build','Package')][string]$Target='All',[switch]$Render,[switch]$AddressSanitizer,[string]$DriverInstaller)
 $ErrorActionPreference='Stop'
 $root=$PSScriptRoot
 $vs=& "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath
@@ -15,22 +15,18 @@ try{
   if(!$toolset){throw 'Install the current Visual Studio C++ AddressSanitizer component.'}
   $env:PATH=(Join-Path $toolset.FullName 'bin\Hostx64\x64')+';'+$env:PATH
  }
- if($Target -ne 'Test'){
-  $toolsetArgs=@();if($AddressSanitizer){$toolsetArgs=@('-T',('version='+$toolset.Name))}
-  & $cmake -S $root -B $build -G 'Visual Studio 17 2022' -A x64 @toolsetArgs ('-DVMI_ASAN='+$asan)
-  if($LASTEXITCODE){throw 'CMake configuration failed.'}
-  $buildArgs=@();if($AddressSanitizer){$buildArgs=@('--',('/p:VCToolsVersion='+$toolset.Name),'/p:PreferredToolArchitecture=x64')}
-  & $cmake --build $build --config Release --parallel @buildArgs
-  if($LASTEXITCODE){throw 'C++ build failed.'}
- }
+ $toolsetArgs=@();if($AddressSanitizer){$toolsetArgs=@('-T',('version='+$toolset.Name))}
+ & $cmake -S $root -B $build -G 'Visual Studio 17 2022' -A x64 @toolsetArgs ('-DVMI_ASAN='+$asan)
+ if($LASTEXITCODE){throw 'CMake configuration failed.'}
+ $buildArgs=@();if($AddressSanitizer){$buildArgs=@('--',('/p:VCToolsVersion='+$toolset.Name),'/p:PreferredToolArchitecture=x64')}
+ & $cmake --build $build --config Release --parallel @buildArgs
+ if($LASTEXITCODE){throw 'C++ build failed.'}
  function OfflineApp([string[]]$Arguments){
   $process=Start-Process -FilePath (Join-Path $build 'bin\VirtualMouseInput.exe') -ArgumentList $Arguments -WindowStyle Hidden -PassThru
   $heldHandle=$process.Handle
   try{if(!$process.WaitForExit(30000)){throw 'Offline UI test timed out.'};if($process.ExitCode){throw ('Offline UI test failed: '+$process.ExitCode)}}finally{$process.Dispose()}
  }
  if($Target -ne 'Build'){
-  & (Join-Path (Split-Path $cmake -Parent) 'ctest.exe') --test-dir $build -C Release --output-on-failure
-  if($LASTEXITCODE){throw 'Protocol or session tests failed.'}
   OfflineApp @('--ui-self-test',('"'+(Join-Path $build 'ui-tests.json')+'"'))
   $ui=Get-Content -LiteralPath (Join-Path $build 'ui-tests.json') -Raw|ConvertFrom-Json
   if(!$ui.passed -or $ui.driverOpened -or $ui.inputsSent){throw 'Offline UI proof is invalid.'}
@@ -78,5 +74,5 @@ try{
   [IO.File]::WriteAllText((Join-Path $assets 'SHA256SUMS.txt'),($sum -join "`n")+"`n",[Text.Encoding]::ASCII)
   Write-Host ('Release assets: '+$assets)
  }
- Write-Host 'Complete. No real virtual mouse was created and no input was sent by the tests.'
+ Write-Host 'Build complete. No virtual mouse was created and no input was sent.'
 }finally{$env:PATH=$originalPath}

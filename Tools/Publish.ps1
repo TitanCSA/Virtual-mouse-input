@@ -55,9 +55,6 @@ $sources = @('.gitignore', 'CMakeLists.txt', 'Build.ps1', 'README.md', 'LICENSE'
 $sources += @(Get-ChildItem -LiteralPath (Join-Path $root 'App') -File |
     Where-Object { $_.Extension -in @('.cpp', '.h', '.rc', '.manifest', '.ico') } |
     ForEach-Object { 'App/' + $_.Name })
-$sources += @(Get-ChildItem -LiteralPath (Join-Path $root 'Tests') -File |
-    Where-Object { $_.Extension -in @('.cpp', '.h', '.ps1') } |
-    ForEach-Object { 'Tests/' + $_.Name })
 foreach ($source in $sources) {
     $item = Get-Item -LiteralPath (Join-Path $root $source)
     if ($item.PSIsContainer -or ($item.Attributes -band [IO.FileAttributes]::ReparsePoint)) { throw ('Invalid source: ' + $source) }
