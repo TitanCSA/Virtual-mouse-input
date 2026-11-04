@@ -92,6 +92,12 @@ not an assigned production USB identity.
 
 ## Build from source
 
+The matching Vdevice demo driver source is available; see
+[driver/README.md](driver/README.md) for build instructions and separate
+evaluation-source terms. Those terms apply to Titan-authored driver code. Third-party
+source licenses and existing application/SDK licenses remain applicable. Full/commercial
+implementation and private signing or activation material are excluded.
+
 Install **Visual Studio 2022 Desktop development with C++**, a Windows SDK and
 **CMake**. From the repository directory:
 
