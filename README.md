@@ -3,8 +3,9 @@
 A small Windows application that creates a **virtual USB HID mouse** with
 **[Vdevice](https://github.com/TitanCSA/Vdevice)** and sends real mouse reports.
 The device connects automatically when the application opens and disconnects
-when it closes. The interface and complete application source are included;
-the kernel driver source is not.
+when it closes. The interface and complete application source are included. The matching timed
+demo driver source is available under [driver/](driver/README.md); full/commercial
+driver source and private signing or activation material remain excluded.
 
 <!-- full-version-contact:start -->
 > [!IMPORTANT]
@@ -92,11 +93,13 @@ not an assigned production USB identity.
 
 ## Build from source
 
-The matching Vdevice demo driver source is available; see
-[driver/README.md](driver/README.md) for build instructions and separate
-evaluation-source terms. Those terms apply to Titan-authored driver code. Third-party
-source licenses and existing application/SDK licenses remain applicable. Full/commercial
-implementation and private signing or activation material are excluded.
+The matching Vdevice timed demo driver source is available under
+[driver/](driver/README.md). Its [file-specific license map](driver/LICENSE-MAP.txt)
+retains the existing MIT grants and identifies the files with separate
+evaluation-source terms. The published source copy does not establish byte-for-byte
+reproduction of the signed package; its driver build outputs are unsigned.
+Full/commercial driver source and private signing or activation material remain
+excluded.
 
 Install **Visual Studio 2022 Desktop development with C++**, a Windows SDK and
 **CMake**. From the repository directory:
@@ -112,11 +115,14 @@ It does not install a driver, create a virtual device or send input.
 App/       Application, mouse descriptors and report encoding
 Vdevice/   Vdevice.h and Vdevice.cpp, the two-file raw SDK
 docs/      Screenshot and binary distribution terms
+driver/    Matching timed demo driver source, build wrapper and license map
 ```
 
 The [Vdevice API documentation](https://github.com/TitanCSA/Vdevice/blob/main/docs/API.md)
 explains descriptor construction, asynchronous enumeration, ownership and errors.
-This repository includes **user-mode application/SDK source only**.
+This repository includes the user-mode application/SDK and the matching timed demo
+driver source described above. Building the public application does not build,
+sign or install that driver.
 
 ## Demo edition
 
