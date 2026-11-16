@@ -7,17 +7,6 @@ when it closes. The interface and complete application source are included. The 
 demo driver source is available under [driver/](driver/README.md); full/commercial
 driver source and private signing or activation material remain excluded.
 
-<!-- full-version-contact:start -->
-> [!IMPORTANT]
-> **Get the full driver version without demo restrictions**
->
-> **Discord username: `titancsa`**
->
-> Open Discord, choose **Friends > Add Friend**, enter **`titancsa`**, then send a direct message. Ask for the **full driver version without the demo time limit**, and mention **Virtual Mouse Input**.
->
-> The demo limit belongs to **Vdevice**, the driver used by this project. Ask for pricing and the appropriate license / activation instructions; the application or wrapper source keeps its existing license.
-<!-- full-version-contact:end -->
-
 **[Download](https://github.com/TitanCSA/Virtual-mouse-input/releases/latest)** |
 [Vdevice driver and SDK](https://github.com/TitanCSA/Vdevice) |
 [Build from source](#build-from-source)
@@ -143,3 +132,14 @@ with laws and third-party rules. Illegal, malicious or unauthorized use is not
 endorsed. To the extent permitted by law, TitanCSA and contributors provide the
 software "AS IS", without warranties, and are not liable for misuse, damages or
 other consequences of its use. Mandatory legal rights remain unaffected.
+
+<!-- full-version-contact:start -->
+> [!IMPORTANT]
+> **Get the full driver version without demo restrictions**
+>
+> **Discord username: `titancsa`**
+>
+> Open Discord, choose **Friends > Add Friend**, enter **`titancsa`**, then send a direct message. Ask for the **full driver version without the demo time limit**, and mention **Virtual Mouse Input**.
+>
+> The demo limit belongs to **Vdevice**, the driver used by this project. Ask for pricing and the appropriate license / activation instructions; the application or wrapper source keeps its existing license.
+<!-- full-version-contact:end -->
