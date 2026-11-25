@@ -3,7 +3,11 @@
 <!-- simple-start:start -->
 Try sending movement from a virtual mouse in Windows.
 
-**Start here.** Read the setup steps and check which driver the example needs.
+[First steps](#first-steps) · [Develop](#build-from-source) · [Maintain](https://github.com/TitanCSA/sdk-packages/blob/main/CONTRIBUTING.md)
+
+## First steps
+
+Read the setup steps and check which driver the example needs.
 <!-- simple-start:end -->
 
 <!-- full-version-contact:start -->
