@@ -1,13 +1,16 @@
 # Virtual Mouse Input - C++ Virtual USB Mouse Example
 
+<!-- simple-start:start -->
+Try sending movement from a virtual mouse in Windows.
+
+**Start here.** Read the setup steps and check which driver the example needs.
+<!-- simple-start:end -->
+
 <!-- full-version-contact:start -->
 > [!IMPORTANT]
-> **Get the version without the one-hour demo limit**
+> **Version without the one-hour demo limit**
 >
-> **Discord · `titancsa`**. Open [Discord](https://discord.com/app), choose **Friends → Add Friend**, enter **`titancsa`** and send a message.
-> Mention **Virtual-mouse-input** and ask for the full **Vdevice** driver. TitanCSA will share the purchase details privately.
->
-> **FR · Version sans la limite d’une heure.** Ajoute **`titancsa`** sur Discord et envoie le nom du projet. Le lien d’achat est communiqué en privé.
+> In [Discord](https://discord.com/app), choose **Add Friend** and enter **`titancsa`**. Mention **Virtual-mouse-input** and ask for the full **Vdevice** driver. Purchase details are sent privately.
 <!-- full-version-contact:end -->
 
 A small Windows application that creates a **virtual USB HID mouse** with
@@ -142,5 +145,3 @@ with laws and third-party rules. Illegal, malicious or unauthorized use is not
 endorsed. To the extent permitted by law, TitanCSA and contributors provide the
 software "AS IS", without warranties, and are not liable for misuse, damages or
 other consequences of its use. Mandatory legal rights remain unaffected.
-
-
